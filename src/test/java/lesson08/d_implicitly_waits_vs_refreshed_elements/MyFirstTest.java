@@ -34,15 +34,14 @@ public class MyFirstTest {
     }
 
     @Test(timeout = 5000l)
-    public void verifyFirstTipIsCorrectlyUpdatedAfterEnteringNewQuery() {
+    public void verifyFirstTipIsCorrectlyUpdatedAfterEnteringNewQuery_withoutWaitForDisappearingOldOne() {
         driver.findElement(By.id("search_query_top"))
                 .clear();
         driver.findElement(By.id("search_query_top"))
                 .sendKeys("Dress");
 
         Assert.assertThat(
-                driver
-                        .findElement(By.xpath("//*[@id=\"index\"]/div[2]/ul/li[1]"))
+                driver.findElement(By.xpath("//*[@id=\"index\"]/div[2]/ul/li[1]"))
                         .getText(),
                 CoreMatchers.containsString("Dress"));
 
@@ -50,25 +49,36 @@ public class MyFirstTest {
                 .clear();
         driver.findElement(By.id("search_query_top"))
                 .sendKeys("T-shirt");
-        waitForElementDisappearing(By.xpath("//*[@id='index']/div[2]/ul/li[position()=1 and contains(text(), 'Dress')]"), 5000l);
+        
         Assert.assertThat(
-                driver
-                        .findElement(By.xpath("//*[@id=\"index\"]/div[2]/ul/li[1]"))
+                driver.findElement(By.xpath("//*[@id=\"index\"]/div[2]/ul/li[1]")) // this element is found but with old tip text, it's a pity
                         .getText(),
                 CoreMatchers.containsString("T-shirt"));
     }
-
+    
     @Test(timeout = 5000l)
-    @Ignore
-    public void verifyFirstTipIsCorrect_viaAssertTrue() {
+    public void verifyFirstTipIsCorrectlyUpdatedAfterEnteringNewQuery_withWaitForDisappearingOldOne() {
         driver.findElement(By.id("search_query_top"))
                 .clear();
         driver.findElement(By.id("search_query_top"))
                 .sendKeys("Dress");
 
-        Assert.assertTrue("First tip text was wrong",
+        Assert.assertThat(
                 driver.findElement(By.xpath("//*[@id=\"index\"]/div[2]/ul/li[1]"))
-                        .getText().contains("Dress1"));
+                        .getText(),
+                CoreMatchers.containsString("Dress"));
+
+        driver.findElement(By.id("search_query_top"))
+                .clear();
+        driver.findElement(By.id("search_query_top"))
+                .sendKeys("T-shirt");
+        
+        // this wait fixes previous test cause it waits for disappearing of old tip
+        waitForElementDisappearing(By.xpath("//*[@id='index']/div[2]/ul/li[position()=1 and contains(text(), 'Dress')]"), 5000l);
+        Assert.assertThat(
+                driver.findElement(By.xpath("//*[@id=\"index\"]/div[2]/ul/li[1]"))
+                        .getText(),
+                CoreMatchers.containsString("T-shirt"));
     }
 
     void waitForElementDisappearing(By locator, long timeout) {

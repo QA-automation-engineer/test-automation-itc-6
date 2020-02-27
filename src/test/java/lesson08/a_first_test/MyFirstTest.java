@@ -31,6 +31,8 @@ public class MyFirstTest {
         driver.quit();
     }
 
+    // Using of assertTrue isn't useful for different comparison
+    // in fails you should check what was expected and actual results
     @Test(timeout = 5000l)
     public void verifyFirstTipIsCorrect_viaAssertTrue() {
         driver.findElement(By.id("search_query_top"))
@@ -43,6 +45,8 @@ public class MyFirstTest {
                         .getText().contains("Dress1"));
     }
     
+    // More useful is assertThat with correspondent matcher then you will see expected and actual parts
+    // For more details and overview existing matchers: http://hamcrest.org/JavaHamcrest/javadoc/1.3/org/hamcrest/CoreMatchers.html
     @Test(timeout = 5000l)
     public void verifyFirstTipIsCorrect() {
         driver.findElement(By.id("search_query_top"))
@@ -51,8 +55,7 @@ public class MyFirstTest {
                 .sendKeys("Dress");
 
         Assert.assertThat(
-                driver
-                        .findElement(By.xpath("//*[@id=\"index\"]/div[2]/ul/li[1]"))
+                driver.findElement(By.xpath("//*[@id=\"index\"]/div[2]/ul/li[1]"))
                         .getText(),
                 CoreMatchers.containsString("Dress"));
     }

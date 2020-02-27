@@ -31,6 +31,7 @@ public class MyFirstTest {
         driver.quit();
     }
 
+    // Without any waits the test fails cause drop-down tip can't appear in time
     @Test(timeout = 5000l)
     public void verifyFirstTipIsCorrect() {
         driver.findElement(By.id("search_query_top"))
@@ -39,21 +40,8 @@ public class MyFirstTest {
                 .sendKeys("Dress");
 
         Assert.assertThat(
-                driver
-                        .findElement(By.xpath("//*[@id=\"index\"]/div[2]/ul/li[1]"))
+                driver.findElement(By.xpath("//*[@id=\"index\"]/div[2]/ul/li[1]"))
                         .getText(),
                 CoreMatchers.containsString("Dress"));
-    }
-
-    @Test(timeout = 5000l)
-    public void verifyFirstTipIsCorrect_viaAssertTrue() {
-        driver.findElement(By.id("search_query_top"))
-                .clear();
-        driver.findElement(By.id("search_query_top"))
-                .sendKeys("Dress");
-
-        Assert.assertTrue("First tip text was wrong",
-                driver.findElement(By.xpath("//*[@id=\"index\"]/div[2]/ul/li[1]"))
-                        .getText().contains("Dress1"));
     }
 }

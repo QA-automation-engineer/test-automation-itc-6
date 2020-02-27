@@ -31,6 +31,7 @@ public class MyFirstTest {
         driver.quit();
     }
 
+    // Implicitly waits wait for element appearing
     @Test(timeout = 5000l)
     public void verifyFirstTipIsCorrect() {
         driver.findElement(By.id("search_query_top"))
@@ -39,8 +40,7 @@ public class MyFirstTest {
                 .sendKeys("Dress");
 
         Assert.assertThat(
-                driver
-                        .findElement(By.xpath("//*[@id=\"index\"]/div[2]/ul/li[1]"))
+                driver.findElement(By.xpath("//*[@id=\"index\"]/div[2]/ul/li[1]"))
                         .getText(),
                 CoreMatchers.containsString("Dress"));
     }

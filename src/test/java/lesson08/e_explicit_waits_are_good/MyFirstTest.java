@@ -24,7 +24,7 @@ public class MyFirstTest {
         driver = new ChromeDriver();
 
         driver.manage().window().maximize();
-//        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+//        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS); // don't mix implicit and explicit waits
         driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
 
         driver.get("http://automationpractice.com/index.php");
@@ -53,26 +53,12 @@ public class MyFirstTest {
         driver.findElement(By.id("search_query_top"))
                 .sendKeys("T-shirt");
 
-        (new WebDriverWait(driver, 10))
+        (new WebDriverWait(driver, 10)) // here we wait for appearing expected text in refreshed tip
                 .until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[@id=\"index\"]/div[2]/ul/li[1]"), "T-shirt"));
 
         Assert.assertThat(
-                driver
-                        .findElement(By.xpath("//*[@id=\"index\"]/div[2]/ul/li[1]"))
+                driver.findElement(By.xpath("//*[@id=\"index\"]/div[2]/ul/li[1]"))
                         .getText(),
                 CoreMatchers.containsString("T-shirt"));
-    }
-
-    @Test(timeout = 5000l)
-    @Ignore
-    public void verifyFirstTipIsCorrect_viaAssertTrue() {
-        driver.findElement(By.id("search_query_top"))
-                .clear();
-        driver.findElement(By.id("search_query_top"))
-                .sendKeys("Dress");
-
-        Assert.assertTrue("First tip text was wrong",
-                driver.findElement(By.xpath("//*[@id=\"index\"]/div[2]/ul/li[1]"))
-                        .getText().contains("Dress1"));
     }
 }
