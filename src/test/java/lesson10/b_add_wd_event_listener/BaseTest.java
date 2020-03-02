@@ -1,10 +1,12 @@
-package lesson09.g_add_assertall;
+package lesson10.b_add_wd_event_listener;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.AfterClass;
 import org.junit.AssumptionViolatedException;
 import org.junit.BeforeClass;
@@ -13,8 +15,15 @@ import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
+
+import utils.EventHandler;
+import utils.SimpleAPI;
 
 public abstract class BaseTest extends SimpleAPI {
+
+    String name;
+    private static final Logger LOG = LogManager.getLogger(BaseTest.class);
 
     protected static WebDriver driver;
 
@@ -22,13 +31,13 @@ public abstract class BaseTest extends SimpleAPI {
     public TestWatcher testWatcher = new TestWatcher() {
         @Override
         protected void succeeded(Description description) {
-            System.out.printf("Test '%s' - PASSED" + System.lineSeparator(), description.getMethodName());
+            LOG.info("Test '{}' - PASSED", description.getMethodName());
             super.succeeded(description);
         }
 
         @Override
         protected void failed(Throwable e, Description description) {
-            System.out.printf("Test '%s' - FAILED due to: %s" + System.lineSeparator(),
+            LOG.error("Test '{}' - FAILED due to: {}" +
                     description.getMethodName(),
                     e.getMessage());
             super.failed(e, description);
@@ -36,21 +45,24 @@ public abstract class BaseTest extends SimpleAPI {
 
         @Override
         protected void skipped(AssumptionViolatedException e, Description description) {
-            System.out.printf("Test '%s' - SKIPPED" + System.lineSeparator(), description.getMethodName());
+            LOG.info("Test '{}' - SKIPPED", description.getMethodName());
             super.skipped(e, description);
         }
 
         @Override
         protected void starting(Description description) {
-            System.out.printf("Test '%s' - is starting ..." + System.lineSeparator(), description.getMethodName());
+            LOG.info("Test '{}' - is starting ...", description.getMethodName());
             super.starting(description);
         }
     };
 
     @BeforeClass
     public static void setUp() {
-        driver = new ChromeDriver();
+        EventFiringWebDriver wd = new EventFiringWebDriver(new ChromeDriver());
+        wd.register(new EventHandler());
 
+        driver = wd;
+        LOG.debug("ChromeDriver has been started");
         driver.manage().window().maximize();
 //        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
@@ -59,10 +71,11 @@ public abstract class BaseTest extends SimpleAPI {
     @AfterClass
     public static void tearDown() {
         driver.quit();
+        LOG.debug("ChromeDriver has been shut down");
     }
 
     @Override
-    WebDriver getDriver() {
+    protected WebDriver getDriver() {
         return driver;
     }
 

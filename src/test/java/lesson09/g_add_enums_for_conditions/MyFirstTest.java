@@ -1,4 +1,4 @@
-package lesson09.g_add_assertall;
+package lesson09.g_add_enums_for_conditions;
 
 import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
@@ -19,11 +19,9 @@ public class MyFirstTest extends BaseTest {
 
         landingPage.searchFor(query2);
 
-        String firstTipText = landingPage.getFirstTipText(1);
-        assertAll(() -> Assert.assertThat(firstTipText, CoreMatchers.containsString(query2 + "0")),
-                () -> Assert.assertThat(firstTipText, CoreMatchers.containsString(query2)),
-                () -> Assert.assertThat(firstTipText, CoreMatchers.containsString(query2 + "1"))
-        );
+        Assert.assertThat(
+                landingPage.getFirstTipText(1),
+                CoreMatchers.containsString(query2));
     }
 
 }

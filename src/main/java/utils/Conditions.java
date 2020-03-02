@@ -1,4 +1,4 @@
-package lesson09.g_add_assertall;
+package utils;
 
 import java.util.function.Function;
 
