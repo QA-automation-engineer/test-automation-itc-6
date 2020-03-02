@@ -27,7 +27,7 @@ public class MyFirstTest extends BaseTest {
 
         Assert.assertThat(
                 landingPage.getFirstTipText(),
-                CoreMatchers.containsString(query2 + "fdfd"));
+                CoreMatchers.containsString(query2));
     }
 
 }

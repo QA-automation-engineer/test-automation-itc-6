@@ -1,6 +1,6 @@
 package lesson09.g_add_assertall;
 
-import static lesson08.d_add_assertall.Conditions.CLICKABLE;
+import static lesson09.g_add_assertall.Conditions.CLICKABLE;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
