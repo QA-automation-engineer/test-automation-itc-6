@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="debug">
     <properties>
-        <property name="path">$${sys:report.path}/logs</property>
+        <property name="path">target</property>
     </properties>
     <Appenders>
         <File name="FILE1" fileName="${path}/trace.log" append="false">

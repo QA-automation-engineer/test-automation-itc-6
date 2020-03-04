@@ -18,7 +18,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public abstract class BaseTest extends SimpleAPI {
 
-    String name;
     private static final Logger LOG = LogManager.getLogger(BaseTest.class);
 
     protected static WebDriver driver;

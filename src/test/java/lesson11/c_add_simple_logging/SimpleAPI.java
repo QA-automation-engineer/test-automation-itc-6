@@ -5,6 +5,8 @@ import static lesson11.c_add_simple_logging.Conditions.VISIBLE;
 import java.util.List;
 import java.util.function.Function;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,10 +16,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class SimpleAPI {
 
+    private static final Logger LOG = LogManager.getLogger(SimpleAPI.class); 
+    
     abstract WebDriver getDriver();
 
     void open(String url) {
-        System.out.println(url + " is opening...");
+        LOG.info("{} is opening...", url);
         getDriver().get(url);
     }
 
