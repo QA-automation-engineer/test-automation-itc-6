@@ -1,4 +1,4 @@
-package lesson09.a_own_expected_condition;
+package lesson09_and_10.a_own_expected_condition;
 
 
 import org.checkerframework.checker.nullness.compatqual.NullableDecl;

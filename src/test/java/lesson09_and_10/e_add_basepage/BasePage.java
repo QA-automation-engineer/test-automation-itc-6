@@ -1,4 +1,4 @@
-package lesson09.e_add_basepage;
+package lesson09_and_10.e_add_basepage;
 
 import java.util.List;
 

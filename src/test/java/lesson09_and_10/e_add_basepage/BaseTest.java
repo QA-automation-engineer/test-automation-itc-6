@@ -1,4 +1,4 @@
-package lesson09.d_add_basetest;
+package lesson09_and_10.e_add_basepage;
 
 import java.util.concurrent.TimeUnit;
 

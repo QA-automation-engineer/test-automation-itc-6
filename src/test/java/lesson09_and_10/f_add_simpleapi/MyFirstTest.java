@@ -1,4 +1,4 @@
-package lesson09.e_add_basepage;
+package lesson09_and_10.f_add_simpleapi;
 
 import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
@@ -11,6 +11,7 @@ public class MyFirstTest extends BaseTest {
     @Test
     public void verifyFirstTipIsCorrectlyUpdatedAfterEnteringNewQuery() {
         LandingPage landingPage = new LandingPage(driver);
+        landingPage.openPage();
         String query1 = "Dress";
         String query2 = "T-shirt";
 
@@ -27,7 +28,7 @@ public class MyFirstTest extends BaseTest {
 
         Assert.assertThat(
                 landingPage.getFirstTipText(),
-                CoreMatchers.containsString(query2));
+                CoreMatchers.containsString(query2 + "fdfd"));
     }
 
 }

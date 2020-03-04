@@ -1,4 +1,4 @@
-package lesson09.b_take_care_about_cachelookup;
+package lesson09_and_10.a_page_factory_and_lazy_proxy_lements;
 
 import java.util.concurrent.TimeUnit;
 
@@ -10,7 +10,6 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -61,11 +60,9 @@ public class MyFirstTest {
     class LandingPage {
 
         @FindBy(id = "search_query_top")
-        @CacheLookup
         private WebElement searchBox;
 
         @FindBy(xpath = "//*[@id=\"index\"]/div[2]/ul/li[1]")
-//        @CacheLookup
         private WebElement firstTip;
 
         public LandingPage(WebDriver driver) {

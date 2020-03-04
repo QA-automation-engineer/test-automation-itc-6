@@ -1,4 +1,4 @@
-package lesson09.c_page_class_with_locators;
+package lesson09_and_10.c_page_class_with_locators;
 
 import java.util.concurrent.TimeUnit;
 

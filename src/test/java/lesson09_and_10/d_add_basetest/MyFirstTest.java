@@ -1,4 +1,4 @@
-package lesson09.d_add_basetest;
+package lesson09_and_10.d_add_basetest;
 
 import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
