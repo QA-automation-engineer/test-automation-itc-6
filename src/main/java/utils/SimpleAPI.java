@@ -5,14 +5,16 @@ import static utils.Conditions.VISIBLE;
 import java.util.List;
 import java.util.function.Function;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class SimpleAPI {
+
+    private static final Logger LOG = LogManager.getLogger(SimpleAPI.class);
 
     protected abstract WebDriver getDriver();
 
@@ -24,8 +26,8 @@ public abstract class SimpleAPI {
         return $(locator, VISIBLE);
     }
 
-    protected WebElement $(String css) {
-        return $(By.cssSelector(css));
+    protected WebElement $(String xpath) {
+        return $(By.xpath(xpath));
     }
 
     protected WebElement $(By locator, Function<By, ExpectedCondition<WebElement>> condition) {
@@ -40,8 +42,8 @@ public abstract class SimpleAPI {
         return getDriver().findElements(locator);
     }
 
-    protected List<WebElement> $$(String css) {
-        return getDriver().findElements(By.cssSelector(css));
+    protected List<WebElement> $$(String xpath) {
+        return getDriver().findElements(By.xpath(xpath));
     }
 
     protected List<WebElement> $$(By locator, Function<By, ExpectedCondition<List<WebElement>>> condition) {
@@ -58,5 +60,18 @@ public abstract class SimpleAPI {
 
     protected <T> T waitFor(ExpectedCondition<T> condition) {
         return waitFor(condition, 10l);
+    }
+
+    protected void waitForDocumentCompleteState() {
+        try {
+            waitFor(driver -> {
+                String documentState = (String) ((JavascriptExecutor) driver)
+                        .executeScript("return document.readyState");
+                LOG.debug("Current document state is: {}", documentState);
+                return "complete".equals(documentState);
+            }, 30);
+        } catch (TimeoutException e) {
+            LOG.warn("Can't wait till document.readyState is complete");
+        }
     }
 }
