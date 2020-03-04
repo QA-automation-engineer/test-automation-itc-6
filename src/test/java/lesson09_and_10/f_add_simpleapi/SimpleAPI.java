@@ -20,7 +20,7 @@ public abstract class SimpleAPI {
     }
 
     WebElement $(By locator) {
-        return $(locator, ExpectedConditions::visibilityOfElementLocated);
+        return $(locator, ExpectedConditions::presenceOfElementLocated);
 
     }
 

@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public enum Conditions {
+    PRESENCE(ExpectedConditions::presenceOfElementLocated),
     VISIBLE(ExpectedConditions::visibilityOfElementLocated),
     CLICKABLE(ExpectedConditions::elementToBeClickable);
 

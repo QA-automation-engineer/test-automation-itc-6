@@ -7,6 +7,7 @@ import java.io.File;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
+import utils.Conditions;
 
 public class FirstTest extends BaseTest {
 
@@ -17,7 +18,7 @@ public class FirstTest extends BaseTest {
 		assertThat(titleContains("Google"));
 		// When
 		$("//*[@id=\"sbtc\"]/div/div[3]/div[1]/span").click();
-		$(By.linkText("Завантажте зображення")).click();
+		$(By.linkText("Завантажте зображення"), Conditions.CLICKABLE).click();
 		String filePath = new File("").getAbsolutePath().concat("\\").concat("download.jpg");
 
 		$(By.id("qbfile"))

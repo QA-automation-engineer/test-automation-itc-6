@@ -32,7 +32,7 @@ public abstract class BaseTest extends SimpleAPI {
 
         @Override
         protected void failed(Throwable e, Description description) {
-            LOG.error("Test '{}' - FAILED due to: {}" +
+            LOG.error("Test '{}' - FAILED due to: {}",
                     description.getMethodName(),
                     e.getMessage());
             super.failed(e, description);

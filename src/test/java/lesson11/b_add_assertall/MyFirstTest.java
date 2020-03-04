@@ -20,7 +20,8 @@ public class MyFirstTest extends BaseTest {
         landingPage.searchFor(query2);
 
         String firstTipText = landingPage.getFirstTipText(1);
-        assertAll(() -> Assert.assertThat(firstTipText, CoreMatchers.containsString(query2 + "0")),
+        assertAll(
+                () -> Assert.assertThat(" vou-vou", firstTipText, CoreMatchers.containsString(query2 + "0")),
                 () -> Assert.assertThat(firstTipText, CoreMatchers.containsString(query2)),
                 () -> Assert.assertThat(firstTipText, CoreMatchers.containsString(query2 + "1"))
         );
