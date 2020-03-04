@@ -1,4 +1,4 @@
-package lesson09.h_add_assertall;
+package lesson11.c_add_simple_logging;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;

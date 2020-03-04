@@ -1,8 +1,10 @@
-package lesson09.h_add_assertall;
+package lesson11.d_add_wd_event_listener;
 
 import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
 import org.junit.Test;
+
+import pages.LandingPage;
 
 public class MyFirstTest extends BaseTest {
 
@@ -20,10 +22,7 @@ public class MyFirstTest extends BaseTest {
         landingPage.searchFor(query2);
 
         String firstTipText = landingPage.getFirstTipText(1);
-        assertAll(() -> Assert.assertThat(firstTipText, CoreMatchers.containsString(query2 + "0")),
-                () -> Assert.assertThat(firstTipText, CoreMatchers.containsString(query2)),
-                () -> Assert.assertThat(firstTipText, CoreMatchers.containsString(query2 + "1"))
-        );
+        assertAll(() -> Assert.assertThat(firstTipText, CoreMatchers.containsString(query2)));
     }
 
 }

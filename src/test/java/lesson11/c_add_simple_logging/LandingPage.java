@@ -1,6 +1,6 @@
-package lesson09.g_add_enums_for_conditions;
+package lesson11.c_add_simple_logging;
 
-import static lesson09.g_add_enums_for_conditions.Conditions.CLICKABLE;
+import static lesson11.c_add_simple_logging.Conditions.CLICKABLE;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

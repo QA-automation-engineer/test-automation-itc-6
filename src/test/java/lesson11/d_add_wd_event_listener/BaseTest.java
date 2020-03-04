@@ -1,4 +1,4 @@
-package lesson10.b_add_wd_event_listener;
+package lesson11.d_add_wd_event_listener;
 
 import java.util.ArrayList;
 import java.util.List;

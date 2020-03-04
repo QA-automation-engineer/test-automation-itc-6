@@ -1,4 +1,4 @@
-package lesson09.g_add_enums_for_conditions;
+package lesson11.a_add_enums_for_conditions;
 
 import org.hamcrest.CoreMatchers;
 import org.junit.Assert;

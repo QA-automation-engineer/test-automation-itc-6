@@ -1,6 +1,6 @@
-package lesson09.g_add_enums_for_conditions;
+package lesson11.a_add_enums_for_conditions;
 
-import static lesson09.g_add_enums_for_conditions.Conditions.VISIBLE;
+import static lesson11.a_add_enums_for_conditions.Conditions.VISIBLE;
 
 import java.util.List;
 import java.util.function.Function;

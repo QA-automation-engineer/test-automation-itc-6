@@ -1,4 +1,4 @@
-package lesson10.a_add_simple_logging;
+package lesson11.c_add_simple_logging;
 
 import java.util.function.Function;
 

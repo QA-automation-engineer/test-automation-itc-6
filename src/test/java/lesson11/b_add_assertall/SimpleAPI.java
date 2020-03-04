@@ -1,6 +1,6 @@
-package lesson09.g_add_assertall;
+package lesson11.b_add_assertall;
 
-import static lesson09.g_add_assertall.Conditions.VISIBLE;
+import static lesson11.b_add_assertall.Conditions.VISIBLE;
 
 import java.util.List;
 import java.util.function.Function;

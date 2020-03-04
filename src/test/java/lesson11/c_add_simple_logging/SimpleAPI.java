@@ -1,6 +1,6 @@
-package lesson10.a_add_simple_logging;
+package lesson11.c_add_simple_logging;
 
-import static lesson09.a_add_simple_logging.Conditions.VISIBLE;
+import static lesson11.c_add_simple_logging.Conditions.VISIBLE;
 
 import java.util.List;
 import java.util.function.Function;

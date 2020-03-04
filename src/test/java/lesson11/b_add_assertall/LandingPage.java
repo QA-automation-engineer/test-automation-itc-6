@@ -1,6 +1,6 @@
-package lesson10.a_add_simple_logging;
+package lesson11.b_add_assertall;
 
-import static lesson09.a_add_simple_logging.Conditions.CLICKABLE;
+import static lesson11.b_add_assertall.Conditions.CLICKABLE;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

@@ -1,6 +1,6 @@
-package lesson09.g_add_assertall;
+package lesson11.a_add_enums_for_conditions;
 
-import static lesson09.g_add_assertall.Conditions.CLICKABLE;
+import static lesson11.a_add_enums_for_conditions.Conditions.CLICKABLE;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
