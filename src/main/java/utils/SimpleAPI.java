@@ -1,6 +1,7 @@
 package utils;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
+import static utils.Conditions.PRESENCE;
 import static utils.Conditions.VISIBLE;
 
 import java.io.File;
@@ -44,7 +45,7 @@ public abstract class SimpleAPI {
     }
 
     protected WebElement $(By locator) {
-        return $(locator, VISIBLE);
+        return $(locator, PRESENCE);
     }
 
     protected WebElement $(String xpath) {
@@ -100,7 +101,7 @@ public abstract class SimpleAPI {
     }
 
     protected <T> T waitFor(ExpectedCondition<T> condition) {
-        return waitFor(condition, 10l);
+        return waitFor(condition, 30l);
     }
 
     protected void waitForDocumentCompleteState() {

@@ -20,4 +20,8 @@ public class LoginPage extends BasePage {
 		$(By.id("SubmitLogin")).click();
 		waitForDocumentCompleteState();
 	}
+
+	public String getErrorMessage() {
+		return $("//*[@id=\"center_column\"]/div[1]/ol/li").getText();
+	}
 }
