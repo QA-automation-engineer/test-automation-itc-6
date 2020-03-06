@@ -1,4 +1,4 @@
-package lesson13;
+package lesson12;
 
 import static org.hamcrest.CoreMatchers.containsString;
 
@@ -11,7 +11,7 @@ import pages.LoginPage;
 /**
  * Created by Vladimir Trandafilov on 25.03.2019.
  */
-public class LoginTest extends lesson13.BaseGUITest {
+public class LoginTest extends BaseGUITest {
 
 	private LoginPage loginPage;
 
